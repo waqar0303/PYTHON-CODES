@@ -1,0 +1,82 @@
+
+
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+
+class linklist:
+
+    def __init__(self):
+        self.head=None
+
+    def insertatstart(self,data):
+        temp=node(data)
+        temp.next=None
+
+        if self.head is None:
+            self.head=temp
+        else:
+            temp.next=self.head
+            self.head=temp
+        
+    def insertatend(self,data):
+        temp=node(data)
+        temp.next=None
+
+        if self.head is None:
+            self.head=temp
+            return
+
+        else:
+            curr=self.head
+            while curr.next:
+                curr=curr.next
+            
+            curr.next=temp
+        
+    def display(self):
+        curr=self.head
+
+        while curr:
+            print(curr.data , " ")
+            curr=curr.next
+
+    def insertatpos(self,pos,data):
+        curr=self.head
+         
+        temp=node(data)
+        for i in range(pos- 1):
+            curr=curr.next
+        
+        temp.next=curr.next
+        curr.next=temp
+
+    def delatstart(self):
+        
+
+        if self.head is None:
+            print("List is Empty!")
+        
+        self.head=self.head.next
+
+
+
+        
+
+l=linklist()
+
+l.insertatstart(10)
+l.insertatend(20)
+l.insertatend(30)
+l.insertatstart(5)
+
+l.insertatpos(3,25)
+
+print("Original Link List")
+l.display()
+
+l.delatstart()
+
+print("After Delete At Start")
+l.display()
